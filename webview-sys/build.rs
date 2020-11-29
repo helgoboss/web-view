@@ -38,10 +38,11 @@ fn main() {
             }
         }
     } else if target.contains("linux") || target.contains("bsd") {
-        pkg_config::Config::new()
-            .atleast_version("2.8")
-            .probe("webkit2gtk-4.0")
-            .unwrap();
+        // Dirty workaround for https://github.com/Boscop/web-view/issues/244#issuecomment-735039714
+//         pkg_config::Config::new()
+//             .atleast_version("2.8")
+//             .probe("webkit2gtk-4.0")
+//             .unwrap();
     } else if target.contains("apple") {
         build
             .file("webview_cocoa.c")
